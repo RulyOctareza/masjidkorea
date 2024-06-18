@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "528323350529",
+    "project_id": "masjidkorea-2f6fd",
+    "storage_bucket": "masjidkorea-2f6fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528323350529:android:6ac20900fb75bafea13000",
+        "android_client_info": {
+          "package_name": "com.rulyoctareza.masjidkorea"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJonnxCz0Vf8vqXDNEVlLZioMkVwI2BWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

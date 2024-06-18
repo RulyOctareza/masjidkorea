@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/theme.dart';
-import 'package:masjidkorea/widgets/city.dart';
 
 class CityCard extends StatelessWidget {
-  final City city;
+  final MasjidModel masjid;
 
-  CityCard(this.city);
+  const CityCard(this.masjid, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,44 +19,44 @@ class CityCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Image.asset(
-                  city.imageUrl,
+                Image.network(
+                  masjid.imageUrl,
                   width: 120,
                   height: 102,
                   fit: BoxFit.cover,
                 ),
-                city.isPopular
-                    ? Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          width: 50,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: purpleColor,
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(36),
-                            ),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              'assets/icon_star.png',
-                              width: 22,
-                              height: 22,
-                            ),
-                          ),
-                        ),
-                      )
-                    : Container(),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    width: 50,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: purpleColor,
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(36),
+                      ),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/icon_star.png',
+                        width: 22,
+                        height: 22,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(
               height: 11,
             ),
             Text(
-              city.name,
+              masjid.city,
               style: blackTextStyle.copyWith(
                 fontSize: 16,
               ),
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
