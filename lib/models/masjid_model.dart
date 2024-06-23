@@ -11,6 +11,13 @@ class MasjidModel extends Equatable {
   final String lemari;
   final String location;
   final String address;
+  final String photos1;
+  final String photos2;
+  final String photos3;
+  final String photos4;
+  final String photos5;
+  final String photos6;
+  final String comunity;
 
   const MasjidModel({
     required this.id,
@@ -23,21 +30,34 @@ class MasjidModel extends Equatable {
     this.lemari = '',
     this.location = '',
     this.address = '',
+    this.photos1 = '',
+    this.photos2 = '',
+    this.photos3 = '',
+    this.photos4 = '',
+    this.photos5 = '',
+    this.photos6 = '',
+    this.comunity = '',
   });
 
   factory MasjidModel.fromJson(String id, Map<String, dynamic> json) =>
       MasjidModel(
-        id: id,
-        name: json['name'],
-        city: json['city'],
-        imageUrl: json['imageUrl'],
-        rating: json['rating'].toDouble(),
-        kitchen: json['kitchen'],
-        bedroom: json['bedroom'],
-        lemari: json['lemari'],
-        location: json['location'],
-        address: json['address'],
-      );
+          id: id,
+          name: json['name'],
+          city: json['city'],
+          location: json['location'],
+          address: json['address'],
+          rating: json['rating'].toDouble(),
+          // kitchen: json['kitchen'],
+          // bedroom: json['bedroom'],
+          // lemari: json['lemari'],
+          imageUrl: json['imageUrl'],
+          photos1: json['photos1'],
+          photos2: json['photos2'],
+          photos3: json['photos3'],
+          photos4: json['photos4'],
+          photos5: json['photos5'],
+          photos6: json['photos6'],
+          comunity: json['comunity']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -45,12 +65,37 @@ class MasjidModel extends Equatable {
         'city': city,
         'imageUrl': imageUrl,
         'rating': rating,
-        'kitchen': kitchen,
-        'bedroom': bedroom,
-        'lemari': lemari,
+        'location': location,
+        'address': address,
+        // 'kitchen': kitchen,
+        // 'bedroom': bedroom,
+        // 'lemari': lemari,
+        'photos1': photos1,
+        'photos2': photos2,
+        'photos3': photos3,
+        'photos4': photos4,
+        'photos5': photos5,
+        'photos6': photos6,
+        'comunity': comunity,
       };
 
   @override
-  List<Object?> get props =>
-      [id, name, city, imageUrl, rating, kitchen, bedroom, lemari];
+  List<Object?> get props => [
+        id,
+        name,
+        address,
+        city,
+        imageUrl,
+        rating,
+        kitchen,
+        bedroom,
+        lemari,
+        photos1,
+        photos2,
+        photos3,
+        photos4,
+        photos5,
+        photos6,
+        comunity,
+      ];
 }

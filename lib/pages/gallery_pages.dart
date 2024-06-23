@@ -1,42 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:masjidkorea/models/masjid_model.dart';
 
 class GalleryPage extends StatelessWidget {
+  final MasjidModel masjid;
+  const GalleryPage(this.masjid, {super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Gallery'),
+        title: Text('Photos'),
       ),
-      body: Container(
-        height: 88,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-            const SizedBox(width: 24),
-            _buildImageAsset('assets/photo1.png', context),
-            const SizedBox(width: 18),
-            _buildImageAsset('assets/photo2.png', context),
-            const SizedBox(width: 18),
-            _buildImageAsset('assets/photo3.png', context),
-            const SizedBox(width: 18),
-            _buildImageAsset('assets/photo3.png', context),
-            const SizedBox(width: 18),
-          ],
-        ),
+      body: Column(
+        children: [
+          Expanded(
+            child: GridView.extent(
+              maxCrossAxisExtent: 150, // Ukuran maksimum setiap elemen di grid
+              scrollDirection: Axis.vertical,
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              children: [
+                _buildImageAsset(masjid.photos1, context),
+                _buildImageAsset(masjid.photos2, context),
+                _buildImageAsset(masjid.photos3, context),
+                _buildImageAsset(masjid.photos4, context),
+                _buildImageAsset(masjid.photos5, context),
+                _buildImageAsset(masjid.photos6, context),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildImageAsset(String assetName, BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _showImageDialog(assetName, context);
-      },
-      child: Image.asset(
-        assetName,
-        width: 110,
-        height: 88,
-        fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 5,
+        vertical: 5,
+      ),
+      child: GestureDetector(
+        onTap: () {
+          _showImageDialog(assetName, context);
+        },
+        child: Container(
+          width: 120,
+          height: 120,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            image: DecorationImage(
+              image: NetworkImage(assetName),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -51,11 +68,14 @@ class GalleryPage extends StatelessWidget {
               Navigator.of(context).pop();
             },
             child: Container(
-              width: double.infinity,
+              width: 300,
               height: 300,
-              child: Image.asset(
-                assetName,
-                fit: BoxFit.cover,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(45),
+                image: DecorationImage(
+                  image: NetworkImage(assetName),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

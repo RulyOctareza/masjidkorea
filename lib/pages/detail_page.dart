@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/pages/gallery_pages.dart';
 import 'package:masjidkorea/theme.dart';
-import 'package:masjidkorea/widgets/facility_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
@@ -29,6 +28,25 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: whiteColor,
+          onPressed: () {
+            setState(() {
+              isFavorited = !isFavorited;
+            });
+          },
+          child: Container(
+              width: 56.0, // ukuran tombol FloatingActionButton default
+              height: 56.0, // ukuran tombol FloatingActionButton default
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage(
+                        isFavorited
+                            ? 'assets/btn_wishlist_active.png'
+                            : 'assets/btn_wishlist.png',
+                      ),
+                      fit: BoxFit.cover)))),
       backgroundColor: whiteColor,
       body: SafeArea(
         bottom: false,
@@ -40,7 +58,7 @@ class _DetailPageState extends State<DetailPage> {
               height: 350,
               fit: BoxFit.cover,
             ),
-            Padding(
+            Container(
               padding: EdgeInsets.symmetric(
                 horizontal: edge,
                 vertical: 30,
@@ -76,41 +94,45 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.masjid.name,
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 22,
-                                    color: blackColor,
+                            Container(
+                              width: 250,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.masjid.name,
+                                    style: blackTextStyle.copyWith(
+                                      fontSize: 22,
+                                      color: blackColor,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  widget.masjid.city,
-                                  style: greyTextStyle.copyWith(
-                                    fontSize: 14,
-                                    color: greyColor,
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    widget.masjid.city,
+                                    style: greyTextStyle.copyWith(
+                                      fontSize: 14,
+                                      color: greyColor,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Image.asset(
-                                'assets/btn_back.png',
-                                width: 40,
+                                ],
                               ),
                             ),
                             Row(
                               children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Image.asset(
+                                    'assets/btn_back.png',
+                                    width: 40,
+                                  ),
+                                ),
                                 Image.asset(
                                   'assets/icon_star.png',
-                                  width: 22,
-                                  height: 22,
+                                  width: 28,
+                                  height: 28,
                                 ),
                                 SizedBox(
                                   width: 6,
@@ -121,60 +143,7 @@ class _DetailPageState extends State<DetailPage> {
                                     fontSize: 18,
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      isFavorited = !isFavorited;
-                                    });
-                                  },
-                                  child: Image.asset(
-                                    isFavorited
-                                        ? 'assets/btn_wishlist_active.png'
-                                        : 'assets/btn_wishlist.png',
-                                    width: 60,
-                                  ),
-                                ),
                               ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: edge),
-                        child: Text(
-                          'Main Facilities',
-                          style: regularTextStyle.copyWith(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: edge,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FacilityItem(
-                              name: 'kitchen',
-                              imageUrl: 'assets/icon_kitchen.png',
-                              status: widget.masjid.kitchen,
-                            ),
-                            FacilityItem(
-                              name: 'bedroom',
-                              imageUrl: 'assets/icon_bedroom.png',
-                              status: widget.masjid.bedroom,
-                            ),
-                            FacilityItem(
-                              name: 'Lemari',
-                              imageUrl: 'assets/icon_cupboard.png',
-                              status: widget.masjid.lemari,
                             ),
                           ],
                         ),
@@ -196,48 +165,48 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                       Container(
                         height: 88,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            const SizedBox(width: 24),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => GalleryPage()),
-                                );
-                              },
-                              child: Image.asset(
-                                'assets/photo1.png',
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        GalleryPage(widget.masjid)));
+                          },
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              const SizedBox(width: 24),
+                              Image.network(
+                                widget.masjid.photos1,
                                 width: 110,
                                 height: 88,
                                 fit: BoxFit.cover,
                               ),
-                            ),
-                            const SizedBox(width: 18),
-                            Image.asset(
-                              'assets/photo2.png',
-                              width: 110,
-                              height: 88,
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(width: 18),
-                            Image.asset(
-                              'assets/photo3.png',
-                              width: 110,
-                              height: 88,
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(width: 18),
-                            Image.asset(
-                              'assets/photo1.png',
-                              width: 110,
-                              height: 88,
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(width: 18),
-                          ],
+                              const SizedBox(width: 18),
+                              Image.network(
+                                widget.masjid.photos2,
+                                width: 110,
+                                height: 88,
+                                fit: BoxFit.cover,
+                              ),
+                              const SizedBox(width: 18),
+                              Image.network(
+                                widget.masjid.photos3,
+                                width: 110,
+                                height: 88,
+                                fit: BoxFit.cover,
+                              ),
+                              const SizedBox(width: 18),
+                              Image.network(
+                                widget.masjid.photos4,
+                                width: 110,
+                                height: 88,
+                                fit: BoxFit.cover,
+                              ),
+                              const SizedBox(width: 18),
+                            ],
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -260,10 +229,14 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              widget.masjid.location,
-                              style: greyTextStyle,
-                              overflow: TextOverflow.ellipsis,
+                            Container(
+                              width: 300,
+                              child: Text(
+                                widget.masjid.location,
+                                style: greyTextStyle.copyWith(
+                                    overflow: TextOverflow.clip),
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                             GestureDetector(
                               onTap: () {

@@ -14,7 +14,7 @@ class MasjidLoading extends MasjidState {}
 class MasjidSuccess extends MasjidState {
   final List<MasjidModel> masjids;
 
-  MasjidSuccess(this.masjids);
+  const MasjidSuccess(this.masjids);
 
   @override
   List<Object> get props => [masjids];
@@ -23,7 +23,7 @@ class MasjidSuccess extends MasjidState {
 class MasjidFailed extends MasjidState {
   final String error;
 
-  MasjidFailed(this.error);
+  const MasjidFailed(this.error);
 
   @override
   List<Object> get props => [error];

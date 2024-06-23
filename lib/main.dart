@@ -7,7 +7,16 @@ import 'package:masjidkorea/pages/splash_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo",
+      authDomain: "masjidkorea-2f6fd.firebaseapp.com",
+      projectId: "masjidkorea-2f6fd",
+      storageBucket: "masjidkorea-2f6fd.appspot.com",
+      messagingSenderId: "528323350529",
+      appId: "1:528323350529:web:d712c2e5b61b2feea13000",
+    ),
+  );
 
   runApp(const MyApp());
 }

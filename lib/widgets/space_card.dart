@@ -31,11 +31,11 @@ class SpaceCard extends StatelessWidget {
                 height: 110,
                 child: Stack(
                   children: [
-                    Image.network(
-                      masjid.imageUrl,
-                      width: 130,
-                      height: 110,
-                      fit: BoxFit.cover,
+                    Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: NetworkImage(masjid.imageUrl),
+                              fit: BoxFit.cover)),
                     ),
                     Align(
                       alignment: Alignment.topRight,

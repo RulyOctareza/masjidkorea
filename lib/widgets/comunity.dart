@@ -1,12 +1,13 @@
+// ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/pages/detail_page.dart';
 import 'package:masjidkorea/theme.dart';
 
-class CityCard extends StatelessWidget {
+class Comunity extends StatelessWidget {
   final MasjidModel masjid;
 
-  const CityCard(this.masjid, {super.key});
+  const Comunity(this.masjid, {super.key});
 
   @override
   Widget build(BuildContext context) {

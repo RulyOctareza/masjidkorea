@@ -20,4 +20,21 @@ class MasjidService {
       rethrow;
     }
   }
+
+  Future<List<MasjidModel>> fetchMasjidsByCommunity(String community) async {
+    try {
+      QuerySnapshot result =
+          await _masjidReference.where('comunity', isEqualTo: community).get();
+
+      List<MasjidModel> masjids = result.docs.map(
+        (e) {
+          return MasjidModel.fromJson(e.id, e.data() as Map<String, dynamic>);
+        },
+      ).toList();
+
+      return masjids;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

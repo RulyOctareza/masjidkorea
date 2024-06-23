@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
 import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/pages/blog.dart';
+import 'package:masjidkorea/pages/comunity_masjid_page.dart';
+import 'package:masjidkorea/pages/search_page.dart';
 import 'package:masjidkorea/theme.dart';
-import 'package:masjidkorea/widgets/citycard.dart';
 import 'package:masjidkorea/widgets/space_card.dart';
 import 'package:masjidkorea/widgets/tips.dart';
 import 'package:masjidkorea/widgets/tips_card.dart';
@@ -23,18 +24,55 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  //Masjid Populer
   @override
   Widget build(BuildContext context) {
+    Widget komunitasMasjid(String communityName, String imageUrl) {
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CommunityMasjidPage(communityName),
+            ),
+          );
+        },
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5),
+              width: 110,
+              height: 110,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.green[300],
+                  image: DecorationImage(
+                      image: AssetImage(imageUrl), fit: BoxFit.cover)),
+            ),
+            Center(
+              child: Text(
+                communityName,
+                style: blackTextStyle.copyWith(
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     Widget masjidPopuler(List<MasjidModel> masjids) {
       return Container(
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
-                'Masjid yang Populer',
+                'Komunitas Masjid',
                 style: regularTextStyle.copyWith(
                   fontSize: 16,
                 ),
@@ -43,30 +81,61 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 16,
             ),
-            Container(
+
+            SizedBox(
               height: 150,
               child: ListView(
-                padding: EdgeInsets.only(left: edge),
+                padding: EdgeInsets.only(left: 5),
                 children: [
                   SizedBox(
                     height: 150,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: masjids.length,
+                      itemCount: 4,
                       itemBuilder: (context, index) {
                         return Row(
                           children: [
-                            if (index != 0)
-                              const SizedBox(width: 15), // Space between cards
-                            CityCard(masjids[index]),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            komunitasMasjid('FKMWU', 'assets/FKMWU.jpg'),
+                            komunitasMasjid('FKMID', 'assets/FKMID.jpg'),
+                            komunitasMasjid('KMJJ', 'assets/KMJJ.jpg'),
+                            komunitasMasjid(
+                                'MITRA PUMITA', 'assets/MITRAPUMITA.jpg'),
                           ],
                         );
                       },
                     ),
-                  ),
+                  )
                 ],
               ),
             )
+
+            // SizedBox(
+            //   height: 150,
+            //   child: ListView(
+            //     padding: EdgeInsets.only(left: edge),
+            //     children: [
+            //       SizedBox(
+            //         height: 150,
+            //         child: ListView.builder(
+            //           scrollDirection: Axis.horizontal,
+            //           itemCount: masjids.length,
+            //           itemBuilder: (context, index) {
+            //             return Row(
+            //               children: [
+            //                 if (index != 0)
+            //                   const SizedBox(width: 15), // Space between cards
+            //                 CityCard(masjids[index]),
+            //               ],
+            //             );
+            //           },
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       );
@@ -102,10 +171,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 IconButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => FavoritePage()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SearchPage()),
+                    );
                   },
                   icon: const Icon(Icons.search),
                 ),
@@ -127,7 +197,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget rekomendasiMasjid(List<MasjidModel> masjids) {
-      // Batasi masjid yang ditampilkan maksimal 3
+      // Batasi masjid yang ditampilkan maksimal 5
       List<MasjidModel> displayedMasjids =
           masjids.length > 5 ? masjids.sublist(0, 5) : masjids;
 
@@ -137,7 +207,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.only(left: edge, top: edge),
             child: Text(
-              'Rekomendasi Masjid',
+              'Rekomendasi Masjid ',
               style: regularTextStyle.copyWith(
                 fontSize: 16,
               ),

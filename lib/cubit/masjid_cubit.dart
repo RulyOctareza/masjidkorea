@@ -19,4 +19,17 @@ class MasjidCubit extends Cubit<MasjidState> {
       emit(MasjidFailed(e.toString()));
     }
   }
+
+  void fetchMasjidsByCommunity(String community) async {
+    try {
+      emit(MasjidLoading());
+
+      List<MasjidModel> masjids =
+          await MasjidService().fetchMasjidsByCommunity(community);
+
+      emit(MasjidSuccess(masjids));
+    } catch (e) {
+      emit(MasjidFailed(e.toString()));
+    }
+  }
 }
