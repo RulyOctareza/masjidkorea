@@ -1,12 +1,7 @@
-class City {
-  int id;
-  String name;
-  String imageUrl;
-  bool isPopular;
+import 'package:masjidkorea/models/masjid_model.dart';
 
-  City(
-      {required this.id,
-      required this.imageUrl,
-      required this.name,
-      this.isPopular = false});
+class City {
+  final MasjidModel masjid;
+
+  City(this.masjid);
 }
