@@ -26,7 +26,7 @@ class SpaceCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(18),
-              child: Container(
+              child: SizedBox(
                 width: 130,
                 height: 110,
                 child: Stack(
@@ -44,7 +44,7 @@ class SpaceCard extends StatelessWidget {
                         height: 30,
                         decoration: BoxDecoration(
                           color: purpleColor,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(36),
                           ),
                         ),

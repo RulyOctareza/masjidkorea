@@ -10,7 +10,7 @@ class FavoritePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: const Text('Favorites'),
       ),
       body: ListView.builder(
         itemCount: favoriteProvider.favorites.length,

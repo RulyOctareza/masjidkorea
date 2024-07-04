@@ -28,8 +28,8 @@ class _SearchPageState extends State<SearchPage> {
             padding: EdgeInsets.only(left: edge, top: edge),
             child: Text(
               'Daftar Masjid di Korea Selatan',
-              style: regularTextStyle.copyWith(
-                fontSize: 16,
+              style: blackTextStyle.copyWith(
+                fontSize: 20,
               ),
             ),
           ),

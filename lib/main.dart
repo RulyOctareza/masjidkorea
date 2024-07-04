@@ -3,19 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
 import 'package:masjidkorea/cubit/page_cubit.dart';
+import 'package:masjidkorea/cubit/tips_bloc.dart';
+import 'package:masjidkorea/firebase_options.dart';
 import 'package:masjidkorea/pages/splash_page.dart';
+import 'package:masjidkorea/services/tips_event.dart';
+import 'package:masjidkorea/services/tips_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo",
-      authDomain: "masjidkorea-2f6fd.firebaseapp.com",
-      projectId: "masjidkorea-2f6fd",
-      storageBucket: "masjidkorea-2f6fd.appspot.com",
-      messagingSenderId: "528323350529",
-      appId: "1:528323350529:web:d712c2e5b61b2feea13000",
-    ),
+    options: DefaultFirebaseOptions.currentPlatform,
   );
 
   runApp(const MyApp());
@@ -34,6 +31,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MasjidCubit(),
         ),
+        BlocProvider(
+            create: (context) => TipsBloc(TipsRepository())..add(FetchTips()))
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
+import 'package:masjidkorea/theme.dart';
 import 'package:masjidkorea/widgets/space_card.dart';
 
 class CommunityMasjidPage extends StatelessWidget {
@@ -11,8 +12,13 @@ class CommunityMasjidPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
-        title: Text('Masjid $community'),
+        title: Text(
+          'Masjid di Wilayah $community',
+          style: blackTextStyle,
+        ),
+        backgroundColor: whiteColor,
       ),
       body: BlocBuilder<MasjidCubit, MasjidState>(
         builder: (context, state) {
@@ -24,7 +30,7 @@ class CommunityMasjidPage extends StatelessWidget {
                 .toList();
 
             if (masjids.isEmpty) {
-              return Center(
+              return const Center(
                 child: Text('Tidak ada masjid untuk komunitas ini.'),
               );
             }
@@ -34,7 +40,7 @@ class CommunityMasjidPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     SpaceCard(masjids[index]),

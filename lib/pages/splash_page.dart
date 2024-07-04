@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
               child: Image.asset('assets/splash_image.png'),
             ),
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 50,
                 left: 30,
               ),
@@ -28,13 +28,13 @@ class SplashPage extends StatelessWidget {
                   Container(
                     height: 50,
                     width: 50,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/logo.png'),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Text(
@@ -43,7 +43,7 @@ class SplashPage extends StatelessWidget {
                       fontSize: 24,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
@@ -52,10 +52,10 @@ class SplashPage extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Container(
+                  SizedBox(
                     width: 210,
                     height: 50,
                     child: ElevatedButton(
@@ -63,7 +63,7 @@ class SplashPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomePage(),
+                              builder: (context) => const HomePage(),
                             ),
                           );
                         },

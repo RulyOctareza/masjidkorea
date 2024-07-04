@@ -15,20 +15,23 @@ class TipsCard extends StatelessWidget {
           tips.imageUrl,
           width: 80,
         ),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              tips.title,
-              style: blackTextStyle.copyWith(
-                fontSize: 14,
-                overflow: TextOverflow.fade,
+            SizedBox(
+              width: 155,
+              child: Text(
+                tips.title,
+                style: blackTextStyle.copyWith(
+                  fontSize: 14,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 4,
             ),
             Text(
@@ -37,7 +40,7 @@ class TipsCard extends StatelessWidget {
             ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         IconButton(
           onPressed: () {},
           icon: Icon(

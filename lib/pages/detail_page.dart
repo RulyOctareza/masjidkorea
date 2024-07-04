@@ -57,13 +57,14 @@ class _DetailPageState extends State<DetailPage> {
               width: MediaQuery.of(context).size.width,
               height: 350,
               fit: BoxFit.cover,
+              semanticLabel: 'Name of Masjid',
             ),
             Container(
               padding: EdgeInsets.symmetric(
                 horizontal: edge,
                 vertical: 30,
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [],
               ),
@@ -94,8 +95,8 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 250,
+                            SizedBox(
+                              width: 200,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -119,6 +120,7 @@ class _DetailPageState extends State<DetailPage> {
                               ),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 GestureDetector(
                                   onTap: () {
@@ -134,7 +136,7 @@ class _DetailPageState extends State<DetailPage> {
                                   width: 28,
                                   height: 28,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 6,
                                 ),
                                 Text(
@@ -163,7 +165,7 @@ class _DetailPageState extends State<DetailPage> {
                       const SizedBox(
                         height: 12,
                       ),
-                      Container(
+                      SizedBox(
                         height: 88,
                         child: GestureDetector(
                           onTap: () {
@@ -229,8 +231,8 @@ class _DetailPageState extends State<DetailPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 300,
+                            SizedBox(
+                              width: 200,
                               child: Text(
                                 widget.masjid.location,
                                 style: greyTextStyle.copyWith(

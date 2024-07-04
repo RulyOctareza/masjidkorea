@@ -22,7 +22,7 @@ class FacilityItem extends StatelessWidget {
           imageUrl,
           width: 32,
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text.rich(

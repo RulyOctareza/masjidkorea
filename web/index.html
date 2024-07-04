@@ -20,12 +20,22 @@
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <!-- Flutter bootstrap script -->
+    <script src="flutter.js" defer></script>
 
+    <script>
+      window.flutterfire_ignore_scripts = ["analytics", "firestore"];
+    </script>
+
+    <!-- Main Dart script -->
+    <script src="main.dart.js" type="application/javascript"></script>
+
+    <!-- Initialize Firebase -->
+    <!-- <script type="module">
+      import * as firebase from "firebase-app";
+      console.log(window);
       // Your web app's Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo",
@@ -39,13 +49,7 @@
       };
 
       // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-    </script>
-
-    <!-- Flutter bootstrap script -->
-    <script src="flutter.js" defer></script>
-
-    <!-- Main Dart script -->
-    <script src="main.dart.js" type="application/javascript"></script>
+      firebase.initializeApp(firebaseConfig);
+    </script> -->
   </body>
 </html>

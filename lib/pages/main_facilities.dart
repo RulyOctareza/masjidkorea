@@ -16,7 +16,7 @@ class MainFacilities extends StatefulWidget {
 class _MainFacilitiesState extends State<MainFacilities> {
   @override
   Widget build(BuildContext context) {
-    final double edge = 16.0; // Define the edge padding value
+    const double edge = 16.0; // Define the edge padding value
 
     return Scaffold(
       body: Column(

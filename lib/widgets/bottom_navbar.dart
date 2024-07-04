@@ -5,7 +5,7 @@ class BottomNavbarItem extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
 
-  BottomNavbarItem({required this.imageUrl, required this.isActive});
+  const BottomNavbarItem({super.key, required this.imageUrl, required this.isActive});
 
   @override
   Widget build(BuildContext context) {
