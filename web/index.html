@@ -20,13 +20,13 @@
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <!-- Modular SDK (Firebase v9+) -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+      import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
 
-    <!-- Initialize Firebase -->
-    <script>
       const firebaseConfig = {
         apiKey: "AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo",
         authDomain: "masjidkorea-2f6fd.firebaseapp.com",
@@ -38,8 +38,10 @@
         appId: "1:528323350529:web:f78cc008e0127423a13000",
       };
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+      const storage = getStorage(app);
     </script>
 
     <!-- Main Dart script -->
