@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:masjidkorea/theme.dart';
 import 'package:masjidkorea/widgets/tips.dart';
 
 class TipsCard extends StatelessWidget {
@@ -11,7 +10,7 @@ class TipsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Image.asset(
+        Image.network(
           tips.imageUrl,
           width: 80,
         ),
@@ -25,7 +24,7 @@ class TipsCard extends StatelessWidget {
               width: 155,
               child: Text(
                 tips.title,
-                style: blackTextStyle.copyWith(
+                style: TextStyle(
                   fontSize: 14,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -36,7 +35,7 @@ class TipsCard extends StatelessWidget {
             ),
             Text(
               'Updated ${tips.updatedAt}',
-              style: greyTextStyle,
+              style: TextStyle(color: Colors.grey),
             ),
           ],
         ),
@@ -45,7 +44,7 @@ class TipsCard extends StatelessWidget {
           onPressed: () {},
           icon: Icon(
             Icons.chevron_right,
-            color: greyColor,
+            color: Colors.grey,
           ),
         ),
       ],

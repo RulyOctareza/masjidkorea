@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:528323350529:android:7f758c1cb9bd72dba13000",
+        "mobilesdk_app_id": "1:528323350529:android:af2f1667692db788a13000",
         "android_client_info": {
-          "package_name": "com.example.masjidkorea"
+          "package_name": "com.masjidkorea.ap"
         }
       },
       "oauth_client": [],
@@ -27,9 +27,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:528323350529:android:73dff052515090e7a13000",
+        "mobilesdk_app_id": "1:528323350529:android:8616a2173bb8b1f9a13000",
         "android_client_info": {
-          "package_name": "com.masjidkorea.app"
+          "package_name": "com.masjidkorea.rulyoctareza"
         }
       },
       "oauth_client": [],

@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
 import 'package:masjidkorea/cubit/page_cubit.dart';
-import 'package:masjidkorea/cubit/tips_bloc.dart';
 import 'package:masjidkorea/firebase_options.dart';
 import 'package:masjidkorea/pages/splash_page.dart';
-import 'package:masjidkorea/services/tips_event.dart';
-import 'package:masjidkorea/services/tips_repository.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,8 +28,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MasjidCubit(),
         ),
-        BlocProvider(
-            create: (context) => TipsBloc(TipsRepository())..add(FetchTips()))
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

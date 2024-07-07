@@ -20,23 +20,13 @@
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-    <!-- Flutter bootstrap script -->
-    <script src="flutter.js" defer></script>
-
-    <script>
-      window.flutterfire_ignore_scripts = ["analytics", "firestore"];
-    </script>
-
-    <!-- Main Dart script -->
-    <script src="main.dart.js" type="application/javascript"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
 
     <!-- Initialize Firebase -->
-    <!-- <script type="module">
-      import * as firebase from "firebase-app";
-      console.log(window);
-      // Your web app's Firebase configuration
+    <script>
       const firebaseConfig = {
         apiKey: "AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo",
         authDomain: "masjidkorea-2f6fd.firebaseapp.com",
@@ -45,11 +35,14 @@
         projectId: "masjidkorea-2f6fd",
         storageBucket: "masjidkorea-2f6fd.appspot.com",
         messagingSenderId: "528323350529",
-        appId: "1:528323350529:web:d712c2e5b61b2feea13000",
+        appId: "1:528323350529:web:f78cc008e0127423a13000",
       };
 
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-    </script> -->
+    </script>
+
+    <!-- Main Dart script -->
+    <script src="main.dart.js" type="application/javascript"></script>
   </body>
 </html>

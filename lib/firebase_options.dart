@@ -23,20 +23,11 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -51,21 +42,55 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo',
-    appId: '1:528323350529:web:d712c2e5b61b2feea13000',
+    appId: '1:528323350529:web:f78cc008e0127423a13000',
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
     authDomain: 'masjidkorea-2f6fd.firebaseapp.com',
-    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCJonnxCz0Vf8vqXDNEVlLZioMkVwI2BWI',
-    appId: '1:528323350529:android:73dff052515090e7a13000',
+    appId: '1:528323350529:android:6ac20900fb75bafea13000',
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
-    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
   );
 
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBtAQpEqjVx4oWN4suPoxdu8OmtyOPCawU',
+    appId: '1:528323350529:ios:e3be443af87aff74a13000',
+    messagingSenderId: '528323350529',
+    projectId: 'masjidkorea-2f6fd',
+    databaseURL:
+        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'masjidkorea-2f6fd.appspot.com',
+    iosBundleId: 'com.example.masjidkorea',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBtAQpEqjVx4oWN4suPoxdu8OmtyOPCawU',
+    appId: '1:528323350529:ios:e3be443af87aff74a13000',
+    messagingSenderId: '528323350529',
+    projectId: 'masjidkorea-2f6fd',
+    databaseURL:
+        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'masjidkorea-2f6fd.appspot.com',
+    iosBundleId: 'com.example.masjidkorea',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDiVmg02Eokl9nZLAZxNZ2Mh0-nkFkziHo',
+    appId: '1:528323350529:web:a14974a3cbac93bca13000',
+    messagingSenderId: '528323350529',
+    projectId: 'masjidkorea-2f6fd',
+    authDomain: 'masjidkorea-2f6fd.firebaseapp.com',
+    databaseURL:
+        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'masjidkorea-2f6fd.appspot.com',
+  );
 }

@@ -10,7 +10,7 @@
       "android": {
         "default": {
           "projectId": "masjidkorea-2f6fd",
-          "appId": "1:528323350529:android:7f758c1cb9bd72dba13000",
+          "appId": "1:528323350529:android:6ac20900fb75bafea13000",
           "fileOutput": "android/app/google-services.json"
         }
       },
@@ -18,8 +18,11 @@
         "lib/firebase_options.dart": {
           "projectId": "masjidkorea-2f6fd",
           "configurations": {
-            "android": "1:528323350529:android:73dff052515090e7a13000",
-            "web": "1:528323350529:web:d712c2e5b61b2feea13000"
+            "android": "1:528323350529:android:6ac20900fb75bafea13000",
+            "ios": "1:528323350529:ios:e3be443af87aff74a13000",
+            "macos": "1:528323350529:ios:e3be443af87aff74a13000",
+            "web": "1:528323350529:web:f78cc008e0127423a13000",
+            "windows": "1:528323350529:web:a14974a3cbac93bca13000"
           }
         }
       }
