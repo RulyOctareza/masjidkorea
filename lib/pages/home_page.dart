@@ -72,8 +72,8 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.only(left: edge),
               child: Text(
-                'Komunitas Masjid',
-                style: regularTextStyle.copyWith(
+                'Komunitas - komunitas Masjid',
+                style: blackTextStyle.copyWith(
                   fontSize: 16,
                 ),
               ),
@@ -196,9 +196,9 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget rekomendasiMasjid(List<MasjidModel> masjids) {
-      // Batasi masjid yang ditampilkan maksimal 5
+      // Batasi masjid yang ditampilkan maksimal 10
       List<MasjidModel> displayedMasjids =
-          masjids.length > 5 ? masjids.sublist(0, 5) : masjids;
+          masjids.length > 10 ? masjids.sublist(0, 10) : masjids;
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                   titleHeader(),
                   masjidPopuler(state.masjids),
                   rekomendasiMasjid(state.masjids),
-                  tipsGuidance(),
+                  // tipsGuidance(),
                 ],
               );
             }

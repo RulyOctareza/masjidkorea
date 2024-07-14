@@ -46,8 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
     authDomain: 'masjidkorea-2f6fd.firebaseapp.com',
-    databaseURL:
-        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
   );
 
@@ -56,8 +55,7 @@ class DefaultFirebaseOptions {
     appId: '1:528323350529:android:6ac20900fb75bafea13000',
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
-    databaseURL:
-        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
   );
 
@@ -66,8 +64,7 @@ class DefaultFirebaseOptions {
     appId: '1:528323350529:ios:e3be443af87aff74a13000',
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
-    databaseURL:
-        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
     iosBundleId: 'com.example.masjidkorea',
   );
@@ -77,8 +74,7 @@ class DefaultFirebaseOptions {
     appId: '1:528323350529:ios:e3be443af87aff74a13000',
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
-    databaseURL:
-        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
     iosBundleId: 'com.example.masjidkorea',
   );
@@ -89,8 +85,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '528323350529',
     projectId: 'masjidkorea-2f6fd',
     authDomain: 'masjidkorea-2f6fd.firebaseapp.com',
-    databaseURL:
-        'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL: 'https://masjidkorea-2f6fd-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'masjidkorea-2f6fd.appspot.com',
   );
+
 }

@@ -13,9 +13,13 @@ class SplashPage extends StatelessWidget {
         bottom: false,
         child: Stack(
           children: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset('assets/splash_image.png'),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image.asset(
+                'assets/korea1.jpg',
+                fit: BoxFit.fill,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -26,8 +30,8 @@ class SplashPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 50,
-                    width: 50,
+                    height: 75,
+                    width: 75,
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('assets/logo.png'),
@@ -47,8 +51,8 @@ class SplashPage extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Mari luangkan waktu untuk beribadah\ndi Negeri Ginseng ',
-                    style: greyTextStyle.copyWith(
+                    'Mari luangkan waktu untuk\nberibadah di Negeri Ginseng ',
+                    style: whiteTextStyle.copyWith(
                       fontSize: 16,
                     ),
                   ),

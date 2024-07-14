@@ -5,6 +5,10 @@ abstract class MasjidState extends Equatable {
 
   @override
   List<Object> get props => [];
+
+  void maybeWhen(
+      {required Null Function(dynamic masjids) success,
+      required Null Function() orElse}) {}
 }
 
 class MasjidInitial extends MasjidState {}
