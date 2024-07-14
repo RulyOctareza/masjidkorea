@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:masjidkorea/cubit/theme_cubit.dart';
 import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/pages/gallery_pages.dart';
 import 'package:masjidkorea/theme.dart';
@@ -74,212 +76,224 @@ class _DetailPageState extends State<DetailPage> {
                 const SizedBox(
                   height: 328,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(20),
-                    ),
-                    color: whiteColor,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: edge,
+                BlocBuilder<ThemeCubit, ThemeMode>(
+                  builder: (context, themeMode) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(20),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 200,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.masjid.name,
-                                    style: blackTextStyle.copyWith(
-                                      fontSize: 22,
-                                      color: blackColor,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    widget.masjid.city,
-                                    style: greyTextStyle.copyWith(
-                                      fontSize: 14,
-                                      color: greyColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                        color: themeMode == ThemeMode.dark
+                            ? blackColor
+                            : whiteColor,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: edge,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Image.asset(
-                                    'assets/btn_back.png',
-                                    width: 40,
+                                SizedBox(
+                                  width: 200,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        widget.masjid.name,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge
+                                            ?.copyWith(
+                                              fontSize: 16,
+                                            ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        widget.masjid.city,
+                                        style: greyTextStyle.copyWith(
+                                          fontSize: 14,
+                                          color: greyColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Image.asset(
-                                  'assets/icon_star.png',
-                                  width: 28,
-                                  height: 28,
-                                ),
-                                const SizedBox(
-                                  width: 6,
-                                ),
-                                Text(
-                                  widget.masjid.rating.toString(),
-                                  style: blackTextStyle.copyWith(
-                                    fontSize: 18,
-                                  ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    GestureDetector(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Icon(Icons.arrow_back_ios_new)),
+                                    Image.asset(
+                                      'assets/icon_star.png',
+                                      width: 28,
+                                      height: 28,
+                                    ),
+                                    const SizedBox(
+                                      width: 6,
+                                    ),
+                                    Text(
+                                      widget.masjid.rating.toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(
+                                            fontSize: 18,
+                                          ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: edge),
-                        child: Text(
-                          'Photos',
-                          style: regularTextStyle.copyWith(
-                            fontSize: 16,
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      SizedBox(
-                        height: 88,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        GalleryPage(widget.masjid)));
-                          },
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              const SizedBox(width: 24),
-                              Image.network(
-                                widget.masjid.photos1,
-                                width: 110,
-                                height: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(width: 18),
-                              Image.network(
-                                widget.masjid.photos2,
-                                width: 110,
-                                height: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(width: 18),
-                              Image.network(
-                                widget.masjid.photos3,
-                                width: 110,
-                                height: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(width: 18),
-                              Image.network(
-                                widget.masjid.photos4,
-                                width: 110,
-                                height: 88,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(width: 18),
-                            ],
+                          const SizedBox(
+                            height: 30,
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: edge),
-                        child: Text(
-                          'Location',
-                          style: regularTextStyle.copyWith(
-                            fontSize: 16,
+                          Padding(
+                            padding: EdgeInsets.only(left: edge),
+                            child: Text(
+                              'Photos',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    fontSize: 16,
+                                  ),
+                            ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: edge),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 200,
-                              child: Text(
-                                widget.masjid.location,
-                                style: greyTextStyle.copyWith(
-                                    overflow: TextOverflow.clip),
-                                overflow: TextOverflow.ellipsis,
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          SizedBox(
+                            height: 88,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            GalleryPage(widget.masjid)));
+                              },
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  const SizedBox(width: 24),
+                                  Image.network(
+                                    widget.masjid.photos1,
+                                    width: 110,
+                                    height: 88,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(width: 18),
+                                  Image.network(
+                                    widget.masjid.photos2,
+                                    width: 110,
+                                    height: 88,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(width: 18),
+                                  Image.network(
+                                    widget.masjid.photos3,
+                                    width: 110,
+                                    height: 88,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(width: 18),
+                                  Image.network(
+                                    widget.masjid.photos4,
+                                    width: 110,
+                                    height: 88,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(width: 18),
+                                ],
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: edge),
+                            child: Text(
+                              'Location',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    fontSize: 16,
+                                  ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: edge),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 200,
+                                  child: Text(
+                                    widget.masjid.location,
+                                    style: greyTextStyle.copyWith(
+                                        overflow: TextOverflow.ellipsis),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      openKakaoMap();
+                                    },
+                                    child: Icon(Icons.map_rounded)),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(horizontal: edge),
+                            height: 50,
+                            width:
+                                MediaQuery.of(context).size.width - (2 * edge),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {
                                 openKakaoMap();
                               },
-                              child: Image.asset(
-                                'assets/btn_map.png',
-                                width: 40,
+                              child: Text(
+                                'Go to Masjid',
+                                style: whiteTextStyle,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: purpleColor,
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: edge),
-                        height: 50,
-                        width: MediaQuery.of(context).size.width - (2 * edge),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            openKakaoMap();
-                          },
-                          child: Text(
-                            'Gass Kesana !',
-                            style: whiteTextStyle,
                           ),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: purpleColor,
+                          const SizedBox(
+                            height: 50,
                           ),
-                        ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             ),

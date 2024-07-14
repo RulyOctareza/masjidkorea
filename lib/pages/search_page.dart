@@ -60,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget daftarmasjid(List<MasjidModel> masjids) {
+  Widget daftarMasjid(List<MasjidModel> masjids) {
     List<MasjidModel> displayMasjids =
         _searchController.text.isEmpty ? masjids : _filteredMasjids;
 
@@ -71,12 +71,12 @@ class _SearchPageState extends State<SearchPage> {
           padding: EdgeInsets.only(left: edge, top: edge),
           child: Text(
             'Daftar Masjid di Korea Selatan',
-            style: blackTextStyle.copyWith(
-              fontSize: 20,
-            ),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontSize: 20,
+                ),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 5),
         searchBox(),
         const SizedBox(height: 16),
         Column(
@@ -98,20 +98,10 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         bottom: false,
-        child: BlocConsumer<MasjidCubit, MasjidState>(
-          listener: (context, state) {
-            if (state is MasjidFailed) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: purpleColor,
-                  content: Text(state.error), // Tampilkan pesan kesalahan
-                ),
-              );
-            }
-          },
+        child: BlocBuilder<MasjidCubit, MasjidState>(
           builder: (context, state) {
             if (state is MasjidSuccess) {
               // Inisialisasi daftar masjid terfilter dengan semua masjid saat pertama kali berhasil memuat data
@@ -120,7 +110,7 @@ class _SearchPageState extends State<SearchPage> {
               }
               return ListView(
                 children: [
-                  daftarmasjid(state.masjids),
+                  daftarMasjid(state.masjids),
                 ],
               );
             }

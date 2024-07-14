@@ -79,9 +79,9 @@ class SpaceCard extends StatelessWidget {
                 children: [
                   Text(
                     masjid.name,
-                    style: blackTextStyle.copyWith(
-                      fontSize: 15,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontSize: 15,
+                        ),
                     overflow:
                         TextOverflow.ellipsis, // Tambahkan overflow ellipsis
                   ),

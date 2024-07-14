@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
+import 'package:masjidkorea/cubit/theme_cubit.dart';
 import 'package:masjidkorea/models/masjid_model.dart';
 import 'package:masjidkorea/pages/blog.dart';
 import 'package:masjidkorea/pages/comunity_masjid_page.dart';
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  //Masjid Populer
   @override
   Widget build(BuildContext context) {
     Widget komunitasMasjid(String communityName, String imageUrl) {
@@ -52,9 +52,10 @@ class _HomePageState extends State<HomePage> {
             Center(
               child: Text(
                 communityName,
-                style: blackTextStyle.copyWith(
-                  fontSize: 20,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -73,9 +74,9 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.only(left: edge),
               child: Text(
                 'Komunitas - komunitas Masjid',
-                style: blackTextStyle.copyWith(
-                  fontSize: 16,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontSize: 16,
+                    ),
               ),
             ),
             const SizedBox(
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(left: 5),
                 children: [
                   SizedBox(
-                    height: 150,
+                    height: 175,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 4,
@@ -110,31 +111,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             )
-
-            // SizedBox(
-            //   height: 150,
-            //   child: ListView(
-            //     padding: EdgeInsets.only(left: edge),
-            //     children: [
-            //       SizedBox(
-            //         height: 150,
-            //         child: ListView.builder(
-            //           scrollDirection: Axis.horizontal,
-            //           itemCount: masjids.length,
-            //           itemBuilder: (context, index) {
-            //             return Row(
-            //               children: [
-            //                 if (index != 0)
-            //                   const SizedBox(width: 15), // Space between cards
-            //                 CityCard(masjids[index]),
-            //               ],
-            //             );
-            //           },
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // )
           ],
         ),
       );
@@ -153,20 +129,15 @@ class _HomePageState extends State<HomePage> {
                   padding: EdgeInsets.only(left: edge),
                   child: Text(
                     'Explore Now',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 24,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => FavoritePage()),
-                    // );
+                    context.read<ThemeCubit>().toggleTheme();
                   },
-                  icon: const Icon(Icons.favorite),
+                  icon: Icon(Icons.brightness_6),
                 ),
                 IconButton(
                   onPressed: () {
@@ -186,9 +157,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: edge),
             child: Text(
               'Yuk ke Masjid terdekat',
-              style: greyTextStyle.copyWith(
-                fontSize: 16,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
         ],
@@ -196,7 +165,6 @@ class _HomePageState extends State<HomePage> {
     }
 
     Widget rekomendasiMasjid(List<MasjidModel> masjids) {
-      // Batasi masjid yang ditampilkan maksimal 10
       List<MasjidModel> displayedMasjids =
           masjids.length > 10 ? masjids.sublist(0, 10) : masjids;
 
@@ -207,9 +175,9 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: edge, top: edge),
             child: Text(
               'Rekomendasi Masjid ',
-              style: regularTextStyle.copyWith(
-                fontSize: 16,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 16,
+                  ),
             ),
           ),
           const SizedBox(height: 16),
@@ -235,7 +203,9 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(left: edge, top: 20),
             child: Text(
               'Tips & Guidance',
-              style: regularTextStyle.copyWith(fontSize: 16),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 16,
+                  ),
             ),
           ),
           const SizedBox(height: 16),
@@ -277,7 +247,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         bottom: false,
         child: BlocConsumer<MasjidCubit, MasjidState>(
@@ -298,7 +268,6 @@ class _HomePageState extends State<HomePage> {
                   titleHeader(),
                   masjidPopuler(state.masjids),
                   rekomendasiMasjid(state.masjids),
-                  // tipsGuidance(),
                 ],
               );
             }

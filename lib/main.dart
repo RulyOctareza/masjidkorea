@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:masjidkorea/cubit/masjid_cubit.dart';
 import 'package:masjidkorea/cubit/page_cubit.dart';
+import 'package:masjidkorea/cubit/theme_cubit.dart';
 import 'package:masjidkorea/firebase_options.dart';
 import 'package:masjidkorea/pages/splash_page.dart';
 import 'package:masjidkorea/theme.dart';
@@ -29,11 +30,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => MasjidCubit(),
         ),
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        ),
       ],
-      child: MaterialApp(
-        theme: darkTheme,
-        debugShowCheckedModeBanner: false,
-        home: SplashPage(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: themeMode,
+            home: SplashPage(),
+          );
+        },
       ),
     );
   }
