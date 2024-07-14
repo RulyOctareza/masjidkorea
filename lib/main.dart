@@ -5,6 +5,7 @@ import 'package:masjidkorea/cubit/masjid_cubit.dart';
 import 'package:masjidkorea/cubit/page_cubit.dart';
 import 'package:masjidkorea/firebase_options.dart';
 import 'package:masjidkorea/pages/splash_page.dart';
+import 'package:masjidkorea/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
           create: (context) => MasjidCubit(),
         ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: darkTheme,
         debugShowCheckedModeBanner: false,
         home: SplashPage(),
       ),
