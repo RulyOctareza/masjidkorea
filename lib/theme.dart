@@ -37,7 +37,7 @@ TextStyle regularTextStyle = GoogleFonts.poppins(
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: purpleColor,
-  hintColor: orangeColor,
+  hintColor: blackColor,
   textTheme: TextTheme(
     bodyLarge: blackTextStyle,
     bodyMedium: regularTextStyle,
@@ -49,7 +49,7 @@ ThemeData lightTheme = ThemeData(
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: purpleColor,
-  hintColor: orangeColor,
+  hintColor: whiteColor,
   textTheme: TextTheme(
     bodyLarge: whiteTextStyle,
     bodyMedium: whiteTextStyle,

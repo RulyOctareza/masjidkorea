@@ -9,7 +9,7 @@ class GalleryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Photos'),
+        title: const Text('Photos'),
       ),
       body: Column(
         children: [
@@ -17,7 +17,7 @@ class GalleryPage extends StatelessWidget {
             child: GridView.extent(
               maxCrossAxisExtent: 150, // Ukuran maksimum setiap elemen di grid
               scrollDirection: Axis.vertical,
-              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              padding: const EdgeInsets.symmetric(horizontal: 5.0),
               children: [
                 _buildImageAsset(masjid.photos1, context),
                 _buildImageAsset(masjid.photos2, context),

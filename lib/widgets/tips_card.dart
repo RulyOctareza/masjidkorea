@@ -24,7 +24,7 @@ class TipsCard extends StatelessWidget {
               width: 155,
               child: Text(
                 tips.title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -35,14 +35,14 @@ class TipsCard extends StatelessWidget {
             ),
             Text(
               'Updated ${tips.updatedAt}',
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
           ],
         ),
         const Spacer(),
         IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.chevron_right,
             color: Colors.grey,
           ),

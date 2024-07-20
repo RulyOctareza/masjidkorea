@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 150,
               child: ListView(
-                padding: EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 children: [
                   SizedBox(
                     height: 175,
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               width: 15,
                             ),
                             komunitasMasjid('FKMWU', 'assets/FKMWU.jpg'),
@@ -137,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     context.read<ThemeCubit>().toggleTheme();
                   },
-                  icon: Icon(Icons.brightness_6),
+                  icon: const Icon(Icons.brightness_6),
                 ),
                 IconButton(
                   onPressed: () {

@@ -50,11 +50,11 @@ class _SearchPageState extends State<SearchPage> {
         controller: _searchController,
         decoration: InputDecoration(
           hintText: 'Cari Masjid...',
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16.0),
+          contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16.0),
         ),
       ),
     );

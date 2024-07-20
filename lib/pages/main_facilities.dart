@@ -23,7 +23,7 @@ class _MainFacilitiesState extends State<MainFacilities> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: edge),
+            padding: const EdgeInsets.only(left: edge),
             child: Text(
               'Main Facilities',
               style: regularTextStyle.copyWith(
@@ -35,7 +35,7 @@ class _MainFacilitiesState extends State<MainFacilities> {
             height: 12,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: edge,
             ),
             child: Row(
